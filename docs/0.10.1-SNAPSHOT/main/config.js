@@ -432,9 +432,9 @@ function createRoutes(){
 
 function createNav(){
     return [
-        { header: 'Core documentation' },
+        { header: '核心文档' },
         {
-            title: 'About',
+            title: '关于',
             action: 'weekend',
             group: '/about',
             items: [
@@ -442,7 +442,7 @@ function createNav(){
             ]
         },
         {
-            title: 'Getting Started',
+            title: '入门文档',
             action: 'assistant',
             group: '/getting-started',
             items: [
@@ -453,7 +453,7 @@ function createNav(){
             ]
         },
         {
-            title: 'Reactive webserver',
+            title: '响应式 webserver',
             action: 'settings_ethernet',
             group: '/webserver',
             items: [
@@ -470,7 +470,7 @@ function createNav(){
             ]
         },
         {
-            title: 'Config',
+            title: '配置',
             action: 'settings',
             group: '/config',
             items: [
@@ -485,7 +485,7 @@ function createNav(){
             ]
         },
         {
-            title: 'Security',
+            title: '安全',
             action: 'security',
             group: '/security',
             items: [
@@ -509,15 +509,15 @@ function createNav(){
             ]
         },
         {
-            title: 'Javadocs',
+            title: 'Java文档',
             action: 'library_books',
             href: 'apidocs/index.html?overview-summary.html',
             target: '_blank'
         },
         { divider: true },
-        { header: 'Additional resources' },
+        { header: '附加资源' },
         {
-            title: 'Community',
+            title: '社区',
             action: 'fa-slack',
             href: 'https://join.slack.com/t/helidon/shared_invite/enQtNDM1NjU3MjkyNDg2LTFkZTM4NmI3OWUyNjUxYWQ5Njc0NGNiMzY3MTZiZmMwNzAxYmI4YzUzOWNkNzNlZTEwNDRkZGU4YzMzZjhkNTE',
             target: '_blank'
