@@ -7,9 +7,8 @@
 <v-card class="section-def__card">
 <v-card-text>
 <dl>
-<dt slot=title>Serving Static Content</dt>
-<dd slot="desc"><p>You can serve static content from a location in a file system
- or from the classpath.</p>
+<dt slot=title>提供静态内容</dt>
+<dd slot="desc"><p>您可以从文件系统中的位置或类路径提供静态内容。</p>
 </dd>
 </dl>
 </v-card-text>
@@ -19,11 +18,11 @@
 </v-flex>
 </v-layout>
 
-<h2 >Serving Static Content</h2>
+<h2 >提供静态内容</h2>
 <div class="section">
 <markup
 lang="properties"
-title="META-INF/microprofile-config.properties - File system static content"
+title="META-INF/microprofile-config.properties - 文件系统静态内容"
 ># Location of content on file system
 server.static.path.location=/var/www/html
 # default is index.html
@@ -33,7 +32,7 @@ server.static.classpath.welcome=resource.html
 
 <markup
 lang="properties"
-title="META-INF/microprofile-config.properties - Classpath static content"
+title="META-INF/microprofile-config.properties - 类路径静态内容"
 ># src/main/resources/WEB in your source tree
 server.static.classpath.location=/WEB
 # default is index.html

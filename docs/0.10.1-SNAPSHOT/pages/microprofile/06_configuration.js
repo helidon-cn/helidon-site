@@ -7,12 +7,10 @@
 <v-card class="section-def__card">
 <v-card-text>
 <dl>
-<dt slot=title>Configuration Secrets</dt>
-<dd slot="desc"><p>When security requires a configuration with repeating complex elements, use Helidon
- Config.</p>
+<dt slot=title>配置密钥</dt>
+<dd slot="desc"><p>当安全性需要具有重复复杂元素的配置时，请使用Helidon Config。</p>
 
-<p>This example configures a basic authentication provider and
- protects static content on the web server. It also includes annotations in Jersey.</p>
+<p>此示例配置基本身份验证提供程序并保护Web服务器上的静态内容。它还包括Jersey的注释。</p>
 </dd>
 </dl>
 </v-card-text>
@@ -22,16 +20,16 @@
 </v-flex>
 </v-layout>
 
-<h2 >Protecting Static Content</h2>
+<h2 >保护静态内容</h2>
 <div class="section">
 <markup
 lang="yaml"
 title="application.yaml"
 >security:
   providers:
-    # Attribute based access control, validates roles
+    # 基于属性的访问控制，验证角色
     - abac:
-    # HTTP Basic authentication provider
+    # HTTP基本认证
     - http-basic-auth:
         realm: "helidon"
         users:
@@ -43,21 +41,19 @@ title="application.yaml"
             roles: ["user"]
           - login: "john"
             password: "password"
-  # Protect static content - require authenticated user
+  # 保护静态内容 - 需要经过身份验证的用户
   web-server:
     paths:
       - path: "/static-cp[/{*}]"
         authenticate: true</markup>
 
 
-<h3 >Protecting Configuration Secrets</h3>
+<h3 >保护配置密钥</h3>
 <div class="section">
-<p>If you don&#8217;t provide an explicit instance of Helidon Config to a MicroProfile server, then the
-secure config filter <strong>is enabled by default</strong>. However, if you don&#8217;t configure it, the secure config filter
- only supports a template for aliasing that checks that no clear text passwords are
- present (template ${CLEAR=&#8230;&#8203;}.</p>
+<p>如果未向MicroProfile服务器提供Helidon Config的显式实例，则<strong>默认情况下会启用</strong>安全配置筛选器。
+但是，如果不进行配置，则安全配置筛选器仅支持别名模板，以检查是否存在明文密码 (template ${CLEAR=&#8230;&#8203;}.</p>
 
-<p>To add the secure config filter:</p>
+<p>添加安全配置筛选器：</p>
 
 <markup
 lang="java"
@@ -66,13 +62,12 @@ title="Add secure config filter"
     .addFilter(SecureConfigFilter.fromConfig())
     .build();</markup>
 
-<p>Put encrypted values into your
- configuration file so that it can be stored in a public repository with no danger of
- exposing the secret values. Be sure to use a strong and secret password.</p>
+<p>将加密值放入配置文件中，以便将其存储在公共存储库中，而不会暴露密钥值。
+请务必使用强密密码。</p>
 
-<p>The supported templates are:</p>
+<p>支持的模板是：</p>
 
-<div class="block-title"><span>Templates</span></div>
+<div class="block-title"><span>模版</span></div>
 <div class="table__overflow elevation-1 ">
 <table class="datatable table">
 <colgroup>
@@ -82,9 +77,9 @@ title="Add secure config filter"
 </colgroup>
 <thead>
 <tr>
-<th>Template</th>
-<th>Description</th>
-<th>Example</th>
+<th>模版</th>
+<th>描述</th>
+<th>举例</th>
 </tr>
 </thead>
 <tbody>
@@ -113,107 +108,92 @@ title="Add secure config filter"
 </div>
 </div>
 
-<h3 >Requiring encryption</h3>
+<h3 >需要加密</h3>
 <div class="section">
-<p>The secure config filter has an option that defines whether
-encryption is required or not. If it&#8217;s set to true, which is the default, then:</p>
+<p>安全配置过滤器有一个选项，用于定义是否需要加密。如果它设置为true（默认值），那么：</p>
 
 <ul class="ulist">
 <li>
-<p>Configuration values with ${CLEAR=&#8230;&#8203;} template will cause an exception when
-requested.</p>
+<p>使用$ {CLEAR = &#8230;&#8203;}模板的配置值将在请求时导致异常。</p>
 
 </li>
 <li>
-<p>The filter fails during bootstrap if <code>security.config.aes.insecure-passphrase</code>
-is configured.</p>
+<p>如果配置了 <code>security.config.aes.insecure-passphrase</code> ，则在引导期间过滤器会失败。</p>
 
 </li>
 </ul>
 </div>
 
-<h3 >Using symmetric encryption (AES)</h3>
+<h3 >使用对称加密（AES）</h3>
 <div class="section">
-<p>Symmetric encryption is based on a shared secret that is known by the person
-encrypting the value and is also provided to the application.</p>
+<p>对称加密基于加密人员已知的public密钥，并且还提供给应用程序。</p>
 
 
-<h4 >Encrypting values (AES)</h4>
+<h4 >加密值（AES）</h4>
 <div class="section">
-<p>The secure config filter provides a Main class <code>io.helidon.security.tools.config.Main</code>
- that can be used to encrypt values.</p>
+<p>安全配置筛选器提供了可用于加密值的主类：<code>io.helidon.security.tools.config.Main</code></p>
 
 <markup
 lang="bash"
-title="Encrypt secret <code>secretToEncrypt</code> using shared secret <code>masterPassword</code>"
+title="使用共享密钥  <code>masterPassword</code> 加密秘密 <code>secretToEncrypt</code>."
 >java io.helidon.security.tools.config.Main aes masterPassword secretToEncrypt</markup>
 
-<p>The tool returns the string to be entered into configuration as the value of a
- property.</p>
+<p>该工具将要输入的字符串作为属性值返回到配置中。</p>
 
 </div>
 
-<h4 >Shared Secret (AES)</h4>
+<h4 >共享密钥（AES）</h4>
 <div class="section">
-<p>You can provide a shared secret in a couple of ways:</p>
+<p>您可以通过以下几种方式提供共享密钥：</p>
 
 <ul class="ulist">
 <li>
-<p>in configuration - for testing/demo purposes only - key is
-<code>security.config.aes.insecure-passphrase</code></p>
+<p>在配置中 - 仅用于测试/演示目的 - key是  <code>security.config.aes.insecure-passphrase</code></p>
 
 </li>
 <li>
-<p>as an environment variable - <code>SECURE_CONFIG_AES_MASTER_PWD</code></p>
+<p>作为环境变量 - <code>SECURE_CONFIG_AES_MASTER_PWD</code></p>
 
 </li>
 </ul>
 </div>
 </div>
 
-<h3 >Using asymmetric encryption (RSA)</h3>
+<h3 >使用非对称加密（RSA）</h3>
 <div class="section">
-<p>This approach is based on a pair of keys: a public key which is known to anybody, and a
- private key which is known to a limited set of parties (usually a single person or
- process).
- For asymmetric encryption, the following is true:</p>
+<p>这种方法基于一对密钥，任何人都知道的公钥，以及有限的一方知道的私钥（通常是一个人或一个过程）。对于非对称加密，以下情况属实：</p>
 
 <ul class="ulist">
 <li>
-<p>a value encrypted by a public key can only be decrypted by the private key</p>
+<p>由公钥加密的值只能由私钥解密</p>
 
 </li>
 <li>
-<p>a value encrypted by a private key can only be decrypted by the public key</p>
+<p>由私钥加密的值只能由公钥解密</p>
 
 </li>
 </ul>
-<p>When using the secure config filter, you should encrypt the configuration values
-using the public key, and give the application process access to the
-private key to decrypt the values.</p>
+<p>使用安全配置筛选器时，应使用公钥加密配置值，并授予应用程序进程访问私钥以解密值的权限。</p>
 
 
-<h4 >Encrypting values (RSA)</h4>
+<h4 >加密值（RSA）</h4>
 <div class="section">
-<p>The secure config filter provides a Main class <code>io.helidon.security.tools.config.Main</code>
- that can be used to encrypt values.</p>
+<p>安全配置筛选器提供了可用于加密值的主类：<code>io.helidon.security.tools.config.Main</code></p>
 
 <markup
 lang="bash"
-title="Encrypt secret <code>secretToEncrypt</code> using public certificate in a keystore"
+title="使用密钥库中的公共证书加密密码 <code>secretToEncrypt</code>"
 >java io.helidon.security.tools.config.Main rsa /path/to/keystore.p12 keystorePassword publicCertAlias secretToEncrypt</markup>
 
-<p>The tool returns the string to be entered into configuration as the value of a
- property.</p>
+<p>该工具将要输入的字符串作为属性值返回到配置中。</p>
 
 </div>
 
-<h4 >Configure secure config filter (RSA)</h4>
+<h4 >配置安全配置过滤器（RSA）</h4>
 <div class="section">
-<p>You can configure the properties of a private key. These
- keys are prefixed with <code>security.config.rsa</code></p>
+<p>您可以配置私钥的属性。这些密钥以 <code>security.config.rsa</code> 为前缀。</p>
 
-<div class="block-title"><span>RSA Configuration Options: Keystore</span></div>
+<div class="block-title"><span>RSA配置选项：密钥库</span></div>
 <div class="table__overflow elevation-1 ">
 <table class="datatable table">
 <colgroup>
@@ -225,9 +205,9 @@ title="Encrypt secret <code>secretToEncrypt</code> using public certificate in a
 <thead>
 <tr>
 <th>What</th>
-<th>Configuration Key</th>
-<th>Environment Variable</th>
-<th>Description</th>
+<th>配置 Key</th>
+<th>环境变量</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
@@ -258,7 +238,7 @@ title="Encrypt secret <code>secretToEncrypt</code> using public certificate in a
 </tbody>
 </table>
 </div>
-<div class="block-title"><span>RSA Configuration Options: PEM (PKCS#8) private key</span></div>
+<div class="block-title"><span>RSA配置选项：PEM（PKCS＃8）私钥</span></div>
 <div class="table__overflow elevation-1 ">
 <table class="datatable table">
 <colgroup>
@@ -270,9 +250,9 @@ title="Encrypt secret <code>secretToEncrypt</code> using public certificate in a
 <thead>
 <tr>
 <th>What</th>
-<th>Configuration Key</th>
-<th>Environment Variable</th>
-<th>Description</th>
+<th>配置 Key</th>
+<th>环境变量</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
@@ -299,7 +279,7 @@ title="Encrypt secret <code>secretToEncrypt</code> using public certificate in a
 </div>
 <markup
 lang="yaml"
-title="Example yaml configuration"
+title="yaml 配置举例"
 >security.config:
   # Set to true for production - if set to true, clear text passwords will cause failure
   require-encryption: false

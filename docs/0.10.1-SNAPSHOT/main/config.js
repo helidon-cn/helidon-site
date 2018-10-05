@@ -208,8 +208,8 @@ function createRoutes(){
         {
             path: '/config/01_introduction',
             meta: {
-                h1: 'The Configuration Component',
-                title: 'The Configuration Component',
+                h1: '组件配置',
+                title: '组件配置',
                 description: 'Helidon config introduction',
                 keywords: 'helidon, config',
                 customLayout: null,
@@ -352,8 +352,8 @@ function createRoutes(){
         {
             path: '/microprofile/01_introduction',
             meta: {
-                h1: 'Microprofile Introduction',
-                title: 'Microprofile Introduction',
+                h1: 'Microprofile 介绍',
+                title: 'Microprofile 介绍',
                 description: 'Helidon Microprofile introduction',
                 keywords: 'helidon, microprofile, micro-profile',
                 customLayout: null,
@@ -364,8 +364,8 @@ function createRoutes(){
         {
             path: '/microprofile/02_server-configuration',
             meta: {
-                h1: 'Configuring the Server',
-                title: 'Configuring the Server',
+                h1: '配置服务器',
+                title: '配置服务器',
                 description: 'Helidon MicroProfile server configuration',
                 keywords: 'helidon, microprofile, micro-profile',
                 customLayout: null,
@@ -376,8 +376,8 @@ function createRoutes(){
         {
             path: '/microprofile/03_application-configuration',
             meta: {
-                h1: 'Configuring the Application',
-                title: 'Configuring the Application',
+                h1: '配置应用程序',
+                title: '配置应用程序',
                 description: 'Helidon MicroProfile application configuration',
                 keywords: 'helidon, microprofile, micro-profile',
                 customLayout: null,
@@ -388,8 +388,8 @@ function createRoutes(){
         {
             path: '/microprofile/04_static-content',
             meta: {
-                h1: 'Serving Static Content',
-                title: 'Serving Static Content',
+                h1: '提供静态内容',
+                title: '提供静态内容',
                 description: 'Helidon Microprofile static content',
                 keywords: 'helidon, microprofile, micro-profile',
                 customLayout: null,
@@ -400,8 +400,8 @@ function createRoutes(){
         {
             path: '/microprofile/05_security',
             meta: {
-                h1: 'Adding Security',
-                title: 'Adding Security',
+                h1: '添加安全性',
+                title: '添加安全性',
                 description: 'Helidon MicroProfile security',
                 keywords: 'helidon, microprofile, micro-profile',
                 customLayout: null,
@@ -412,8 +412,8 @@ function createRoutes(){
         {
             path: '/microprofile/06_configuration',
             meta: {
-                h1: 'Configuration Secrets',
-                title: 'Configuration Secrets',
+                h1: '配置密钥',
+                title: '配置密钥',
                 description: 'Helidon MicroProfile configuration secrets',
                 keywords: 'helidon, microprofile, micro-profile',
                 customLayout: null,
@@ -474,7 +474,7 @@ function createNav(){
             action: 'settings',
             group: '/config',
             items: [
-                { href: '/config/01_introduction', title: 'The Configuration Component' },
+                { href: '/config/01_introduction', title: '组件配置' },
                 { href: '/config/02_config-sources', title: 'Loading Configuration: Config Sources and Parsers' },
                 { href: '/config/03_hierarchical-features', title: 'Hierarchical Features' },
                 { href: '/config/04_property-mapping', title: 'Property Mapping' },
@@ -500,12 +500,12 @@ function createNav(){
             action: 'widgets',
             group: '/microprofile',
             items: [
-                { href: '/microprofile/01_introduction', title: 'Microprofile Introduction' },
-                { href: '/microprofile/02_server-configuration', title: 'Configuring the Server' },
-                { href: '/microprofile/03_application-configuration', title: 'Configuring the Application' },
-                { href: '/microprofile/04_static-content', title: 'Serving Static Content' },
-                { href: '/microprofile/05_security', title: 'Adding Security' },
-                { href: '/microprofile/06_configuration', title: 'Configuration Secrets' }
+                { href: '/microprofile/01_introduction', title: 'Microprofile 介绍' },
+                { href: '/microprofile/02_server-configuration', title: '配置服务器' },
+                { href: '/microprofile/03_application-configuration', title: '配置应用程序' },
+                { href: '/microprofile/04_static-content', title: '提供静态内容' },
+                { href: '/microprofile/05_security', title: '添加安全性' },
+                { href: '/microprofile/06_configuration', title: '配置密钥' }
             ]
         },
         {

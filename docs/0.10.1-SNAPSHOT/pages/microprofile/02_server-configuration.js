@@ -7,8 +7,8 @@
 <v-card class="section-def__card">
 <v-card-text>
 <dl>
-<dt slot=title>Configuring the Server</dt>
-<dd slot="desc"><p>By default, the server uses the MicroProfile Config, but you may also want to use Helidon configuration.</p>
+<dt slot=title>配置服务器</dt>
+<dd slot="desc"><p>默认情况下，服务器使用MicroProfile配置，但您可能还想使用Helidon配置。</p>
 </dd>
 </dl>
 </v-card-text>
@@ -18,9 +18,9 @@
 </v-flex>
 </v-layout>
 
-<h2 >Configuring the Server</h2>
+<h2 >配置服务器</h2>
 <div class="section">
-<p>There are 3 default MicroProfile Config sources:</p>
+<p>有3个默认的MicroProfile配置源：</p>
 
 <ul class="ulist">
 <li>
@@ -32,42 +32,41 @@
 
 </li>
 <li>
-<p>all <code>META-INF/microprofile-config.properties</code> files on the class path</p>
+<p>所有 <code>META-INF/microprofile-config.properties</code> 文件都在类路径下</p>
 
 </li>
 </ul>
-<p>In this example, the configuration is in a file, and it includes Helidon configuration options.</p>
+<p>I在此示例中，配置位于文件中，并包含Helidon配置选项。</p>
 
 <markup
 lang="properties"
-title="META-INF/microprofile-config.properties - Server configuration"
-># default is localhost
+title="META-INF/microprofile-config.properties - 服务器配置"
+># 默认是localhost
 server.host=some.host
-# default is 7001
+# 默认是7001
 server.port=7011
 
-# Helidon configuration (optional)
+# Helidon配置（可选）
 
-# Length of queue for incoming connections. Default is 1024
+# 传入连接的队列长度。默认值为1024
 server.backlog: 512
-# TCP receive window. Default is 0 to use implementation default
+# TCP接收窗口。默认值为0以使用实现默认值
 server.receive-buffer: 256
-# Socket timeout milliseconds - defaults to 0 (infinite)
+# 套接字超时毫秒 - 默认为0（无限）
 server.timeout: 30000
-# Default is CPU_COUNT * 2
+# 默认值为CPU_COUNT * 2
 server.workers=4
-# Default is not to use SSL
+# 默认关闭了SSL
 ssl:
  private-key:
     keystore-resource-path: "certificate.p12"
     keystore-passphrase: "abcd"</markup>
 
-<p>For Helidon config, the default file is <code>application.yaml</code> on the classpath
- (e.g. src/main/resources/application.yaml).</p>
+<p>对于Helidon配置，默认文件是类路径上的 <code>application.yaml</code> （例如 src/main/resources/application.yaml）。</p>
 
 <markup
 lang="yaml"
-title="application.yaml - Server configuration"
+title="application.yaml - 服务器配置"
 >server:
   sockets:
     - secure:

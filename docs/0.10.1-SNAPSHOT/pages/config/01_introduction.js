@@ -7,7 +7,7 @@
 <v-card class="section-def__card">
 <v-card-text>
 <dl>
-<dt slot=title>The Configuration Component</dt>
+<dt slot=title>组件配置</dt>
 <dd slot="desc"><p>The config component provides a Java API to load and process
 configuration properties in key/value form into a <code>Config</code> object which the
 application can use to retrieve config data.</p>
